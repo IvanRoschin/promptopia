@@ -28,6 +28,16 @@ const nextConfig = {
       "/profile/[id]": { page: "/profile/[id]" }, // User profile page
     };
   },
+  generateStaticParams: async () => {
+    // Your logic for generating static paths
+    return [
+      { params: { slug: "/" } },
+      { params: { slug: "create-prompt" } },
+      { params: { slug: "update-prompt" } },
+      { params: { slug: "profile" } },
+      { params: { slug: "profile/[id]" } },
+    ];
+  },
 };
 
 module.exports = nextConfig;
