@@ -19,15 +19,15 @@ const nextConfig = {
     };
     return config;
   },
-  async exportPathMap() {
-    return {
-      "/": { page: "/" }, // Home page
-      "/create-prompt": { page: "/create-prompt" }, // create-prompt page
-      "/update-prompt": { page: "/update-prompt" }, // update-prompt page
-      "/profile": { page: "/profile" }, // profile page
-      "/profile/[id]": { page: "/profile/[id]" }, // User profile page
-    };
-  },
+  // async exportPathMap() {
+  //   return {
+  //     "/": { page: "/" }, // Home page
+  //     "/create-prompt": { page: "/create-prompt" }, // create-prompt page
+  //     "/update-prompt": { page: "/update-prompt" }, // update-prompt page
+  //     "/profile": { page: "/profile" }, // profile page
+  //     "/profile/[id]": { page: "/profile/[id]" }, // User profile page
+  //   };
+  // },
   generateStaticParams: async () => {
     // Your logic for generating static paths
     return [
