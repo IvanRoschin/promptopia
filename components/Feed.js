@@ -51,14 +51,14 @@ const Feed = () => {
 
     //debounce method
     setTimeout(() => {
-      const searchReslust = filterPrompts(e.target.value);
-      setSearchedResults(searchResesult);
+      const searchReslust = filteredPrompts(e.target.value);
+      setSearchedResults(searchReslust);
     }, 500);
   };
 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-    const searchResult = filterPrompts(tagName);
+    const searchResult = filteredPrompts(tagName);
     setSearchedResults(searchResult);
   };
 
@@ -74,8 +74,15 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-
-      <PromptCardList data={allPosts} handleTagClick={() => {}} />
+      {/* All Prompts*/}
+      {searchText ? (
+        <PromptCardList
+          data={searchedResults}
+          handleTagClick={handleTagClick}
+        />
+      ) : (
+        <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
+      )}
     </section>
   );
 };
