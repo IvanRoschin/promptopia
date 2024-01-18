@@ -10,6 +10,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const pathName = usePathname();
   const router = useRouter();
 
+  const handleNavigateToHomePage = () => {
+    router.push("/");
+  };
+
   const [copied, setCopied] = useState("");
   const handleCopy = () => {
     setCopied(post.prompt);

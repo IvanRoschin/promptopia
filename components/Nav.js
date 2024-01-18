@@ -4,8 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
+  const router = useRouter();
+
+  const handleNavigateToHomePage = () => {
+    router.push("/");
+  };
+  const handleSignOutAndNavigate = () => {
+    // Call both functions when the button is clicked
+    signOut();
+    handleNavigateToHomePage();
+  };
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
@@ -39,7 +50,11 @@ const Nav = () => {
               Create Post
             </Link>
 
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={handleSignOutAndNavigate}
+              className="outline_btn"
+            >
               Sign Out
             </button>
 
