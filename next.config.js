@@ -28,15 +28,27 @@ const nextConfig = {
   //     "/profile/[id]": { page: "/profile/[id]" }, // User profile page
   //   };
   // },
-  generateStaticParams: async () => {
+  // generateStaticParams: async () => {
+  //   // Your logic for generating static paths
+  //   return [
+  //     { params: { slug: "/" } },
+  //     { params: { slug: "create-prompt" } },
+  //     { params: { slug: "update-prompt" } },
+  //     { params: { slug: "profile" } },
+  //     { params: { slug: "profile/[id]" } },
+  //   ];
+  // },
+  output: {
     // Your logic for generating static paths
-    return [
-      { params: { slug: "/" } },
-      { params: { slug: "create-prompt" } },
-      { params: { slug: "update-prompt" } },
-      { params: { slug: "profile" } },
-      { params: { slug: "profile/[id]" } },
-    ];
+    async generatePages() {
+      return [
+        { route: "/" }, // Home page
+        { route: "/create-prompt" }, // create-prompt page
+        { route: "/update-prompt" }, // update-prompt page
+        { route: "/profile" }, // profile page
+        { route: "/profile/[id]", params: { id: "example-id" } }, // User profile page
+      ];
+    },
   },
 };
 
