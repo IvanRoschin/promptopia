@@ -35,7 +35,7 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  const filteredPrompts = (searchText) => {
+  const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i"); // "i" flag for case-insesitive search
     return allPosts.filter(
       (item) =>
@@ -50,15 +50,17 @@ const Feed = () => {
     setSearchText(e.target.value);
 
     //debounce method
-    setTimeout(() => {
-      const searchReslust = filteredPrompts(e.target.value);
-      setSearchedResults(searchReslust);
-    }, 500);
+    setSearchTimeout(
+      setTimeout(() => {
+        const searchResult = filterPrompts(e.target.value);
+        setSearchedResults(searchResult);
+      }, 500)
+    );
   };
 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-    const searchResult = filteredPrompts(tagName);
+    const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };
 

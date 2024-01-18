@@ -12,11 +12,7 @@ const Nav = () => {
   const handleNavigateToHomePage = () => {
     router.push("/");
   };
-  const handleSignOutAndNavigate = () => {
-    // Call both functions when the button is clicked
-    signOut();
-    handleNavigateToHomePage();
-  };
+
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
@@ -52,7 +48,10 @@ const Nav = () => {
 
             <button
               type="button"
-              onClick={handleSignOutAndNavigate}
+              onClick={() => {
+                signOut();
+                handleNavigateToHomePage();
+              }}
               className="outline_btn"
             >
               Sign Out
