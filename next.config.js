@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: "export",
+  // distDir: "dist",
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -18,11 +21,6 @@ const nextConfig = {
       topLevelAwait: true,
     };
     return config;
-  },
-  output: "export",
-  distDir: "dist",
-  images: {
-    unoptimized: true,
   },
 };
 
